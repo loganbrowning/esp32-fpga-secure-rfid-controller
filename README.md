@@ -4,7 +4,7 @@
 Logan Browning – Mississippi State University ECE '27
 
 ### Demo Video (30 sec)
-comming
+coming
 
 ### Features
 - PN532 NFC module (I²C) reading MIFARE cards

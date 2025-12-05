@@ -1,0 +1,51 @@
+# -------------------------------------------------------------------------- #
+# Quartus Prime Project File - DE10-Lite (MAX 10 10M50DAF484C7G)
+# -------------------------------------------------------------------------- #
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M50DAF484C7G
+set_global_assignment -name TOP_LEVEL_ENTITY top_fpga
+set_global_assignment -name VERILOG_FILE top_fpga.v
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+
+# ===================== PIN ASSIGNMENTS =====================
+
+# 50 MHz clock
+set_location_assignment PIN_P11  -to CLOCK_50
+
+# JP1 data bus (pins 1–8)
+set_location_assignment PIN_V10  -to bus_data[0]   # JP1-1 (GPIO[0])
+set_location_assignment PIN_W10  -to bus_data[1]   # JP1-2 (GPIO[1])
+set_location_assignment PIN_V9   -to bus_data[2]   # JP1-3 (GPIO[2])
+set_location_assignment PIN_W9   -to bus_data[3]   # JP1-4 (GPIO[3])
+set_location_assignment PIN_V8   -to bus_data[4]   # JP1-5 (GPIO[4])
+set_location_assignment PIN_W8   -to bus_data[5]   # JP1-6 (GPIO[5])
+set_location_assignment PIN_V7   -to bus_data[6]   # JP1-7 (GPIO[6])
+set_location_assignment PIN_W7   -to bus_data[7]   # JP1-8 (GPIO[7])
+
+# JP1 control pins 9–10 (bus_clk, bus_latch)
+set_location_assignment PIN_W6   -to bus_clk       # JP1-9  (GPIO[8])  ← ESP32 GPIO4
+set_location_assignment PIN_V5   -to bus_latch     # JP1-10 (GPIO[9])  ← ESP32 GPIO5
+
+# JP1 pins 13–14 for status back to ESP32
+set_location_assignment PIN_W5   -to valid_out     # JP1-13 (GPIO[10]) ← ESP32 GPIO34
+set_location_assignment PIN_AA15 -to replay_out    # JP1-14 (GPIO[11]) ← ESP32 GPIO35
+
+# ===================== I/O STANDARDS =====================
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bus_data[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bus_data[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bus_data[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bus_data[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bus_data[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bus_data[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bus_data[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bus_data[7]
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bus_clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bus_latch
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to valid_out
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to replay_out
